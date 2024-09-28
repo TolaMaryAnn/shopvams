@@ -15,7 +15,6 @@ const Footer = () => {
       <footer className="bg-black text-white py-10 hidden md:block">
         <div className="container mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-16 px-6">
-            {/* Contact Us Section */}
             <div>
               <h2 className="text-2xl font-extrabold mb-6 tracking-wide">
                 CONTACT US
@@ -31,13 +30,11 @@ const Footer = () => {
                 Lagos, Nigeria. 100001
               </p>
 
-              {/* Payment Logos */}
               <div className="flex items-center space-x-4 mt-6 text-red-500">
                 <FaCcVisa size={50} />
                 <FaCcMastercard size={50} />
               </div>
 
-              {/* Social Icons */}
               <div className="flex items-center space-x-6 mt-6 text-white">
                 <FaWhatsapp
                   size={36}
@@ -50,7 +47,6 @@ const Footer = () => {
               </div>
             </div>
 
-            {/* Sign Up Section */}
             <div>
               <h2 className="text-2xl font-extrabold mb-6 tracking-wide">
                 SIGN UP FOR DISCOUNTS & UPDATES
@@ -84,10 +80,8 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* Divider Line */}
           <hr className="border-gray-600 mt-12" />
 
-          {/* Footer Bottom */}
           <div className="mt-10 text-center">
             <p className="text-gray-400 text-sm">
               Made with <FaHeart className="inline text-green-500" /> by Tola
@@ -96,11 +90,9 @@ const Footer = () => {
         </div>
       </footer>
 
-      {/* Mobile Footer */}
       <footer className="md:hidden">
         <div className="container mx-auto bg-black text-white py-8 px-6">
           <div className="grid grid-cols-1 gap-8">
-            {/* Sign Up Section */}
             <div>
               <h2 className="text-base font-extrabold mb-6">
                 SIGN UP FOR DISCOUNTS & UPDATES
@@ -118,7 +110,6 @@ const Footer = () => {
 
               <hr className="border-gray-600 mt-6 mb-10" />
 
-              {/* Links */}
               <div className="flex flex-col space-y-4">
                 <a
                   href="/"
@@ -135,7 +126,6 @@ const Footer = () => {
               </div>
             </div>
 
-            {/* Contact Us Section */}
             <div>
               <h2 className="text-lg font-extrabold mb-6">CONTACT US</h2>
               <p className="flex items-center text-lg">
@@ -149,13 +139,11 @@ const Footer = () => {
                 Lagos, Nigeria. 100001
               </p>
 
-              {/* Payment Logos */}
               <div className="flex items-center space-x-4 mt-6 text-red-500">
                 <FaCcVisa size={50} />
                 <FaCcMastercard size={50} />
               </div>
 
-              {/* Social Icons */}
               <div className="flex items-center space-x-6 mt-6 text-white">
                 <FaWhatsapp
                   size={36}

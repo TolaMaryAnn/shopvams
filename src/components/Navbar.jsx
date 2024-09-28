@@ -313,7 +313,7 @@ function Navbar() {
       <div className="md:hidden">
         {!isCartOpen && (
           <nav className="flex flex-col items-center py-4 bg-white">
-            <div className="flex items-center justify-between flex-wrap bg-white w-full">
+            <div className="flex items-center justify-between flex-wrap bg-white w-full ">
               {!isSearchOpen && (
                 <>
                   <a
@@ -357,7 +357,7 @@ function Navbar() {
                   </div>
 
                   <div
-                    className="relative ml-4 cursor-pointer mb-4"
+                    className="relative cursor-pointer mb-4"
                     onClick={toggleCart}
                   >
                     <MdOutlineAddShoppingCart
@@ -399,7 +399,7 @@ function Navbar() {
             <MdClose
               className="absolute top-4 right-4 cursor-pointer text-gray-600"
               size={24}
-              onClick={toggleLoginModal} // Close on icon click
+              onClick={toggleLoginModal} 
             />
             <h2 className="lg:text-3xl text-2xl font-bold text-center text-[#502116] mb-4">
               Login
@@ -460,10 +460,11 @@ function Navbar() {
           </div>
         </div>
       )}
+
       {isCartOpen && (
         <div>
           <div
-            className="hidden md:flex flex-col justify-between items-center h-full fixed top-0 right-0 bottom-0 bg-white shadow-lg rounded p-4"
+            className="hidden md:flex flex-col justify-between items-center h-full  fixed top-0 right-0 bottom-0 bg-white shadow-lg rounded p-4"
             style={{ width: "700px", height: "550px" }}
           >
             <div className="flex w-full justify-between">
@@ -658,7 +659,7 @@ function Navbar() {
             )}
           </div>
 
-          <div className="md:hidden flex flex-col space-y-10 top-0 right-0 bottom-0 bg-white shadow-lg rounded p-4 w-96 h-auto">
+          <div className="md:hidden flex flex-col space-y-10 top-0 right-0 bottom-0 shadow-lg rounded p-4 w-96 h-auto bg-white  p-4 w-full max-w-[95%] md:max-w-[500px] mx-auto">
             <div className="flex justify-between items-center">
               <div className="flex items-center">
                 <img src={logo} alt="Logo" className="w-16 h-16 mr-2" />
