@@ -4,19 +4,7 @@ import ProductDetail from "./components/ProductsDetail";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { CartProvider } from "./components/ CartContext";
 import Layout from "./components/Layout";
-import styled, { createGlobalStyle } from "styled-components";
 import Loading from "./components/Loading";
-const GlobalStyle = createGlobalStyle`
-
-
-  body {
-    font-family: 'Raleway', sans-serif;
-  
-    
-  }
-
-  
-`;
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -53,7 +41,6 @@ function App() {
 
   return (
     <CartProvider>
-      <GlobalStyle />
       <Router>
         <Routes>
           <Route path="/" element={<Homepage />} />

@@ -254,53 +254,54 @@ function Navbar() {
   };
 
   return (
-    <div className="shadow-2xl">
+    <div className="sticky top-0 z-50 glass w-full transition-all duration-300">
       {!isCartOpen && (
-        <nav className="flex flex-col py-8 hidden md:block">
-          <div className="flex items-center justify-between flex-wrap bg-white">
+        <nav className="flex flex-col py-4 hidden md:block border-b border-brand-dark/10">
+          <div className="flex items-center justify-between flex-wrap container mx-auto px-6">
             <a
-              href="#"
-              className="flex items-center flex-shrink-0 text-white mr-6 h-0 w-24 cursor-pointer"
+              href="/"
+              className="flex items-center flex-shrink-0 mr-6 w-32 cursor-pointer transition-transform hover:scale-105"
             >
-              <img src={logo} alt="Logo" />
+              <img src={logo} alt="Logo" className="w-full h-auto mix-blend-multiply drop-shadow-md" />
             </a>
 
-            <div className="flex items-center space-x-10 px-16">
-              <div className="relative">
+            <div className="flex items-center space-x-8 px-8 flex-1">
+              <div className="relative flex-1 max-w-xl mx-auto">
                 <input
                   type="text"
-                  placeholder="Search..."
-                  className="px-96 py-2 pl-6 text-black border bg-gray-200 rounded-3xl"
+                  placeholder="Search for premium accessories..."
+                  className="w-full py-3 pl-12 pr-4 text-sm text-brand-dark bg-white/70 border border-white/50 rounded-full focus:outline-none focus:ring-2 focus:ring-brand-accent transition-all duration-300 placeholder-brand-dark/50 shadow-sm backdrop-blur-sm"
                 />
                 <FiSearch
-                  className="absolute top-1/2 transform -translate-y-1/2 text-gray-400"
-                  style={{ left: "580px" }}
+                  className="absolute top-1/2 left-4 transform -translate-y-1/2 text-brand-dark/60" size={20}
                 />
               </div>
 
               <div className="flex items-center space-x-2">
-                <div className="h-0 w-8 mb-4">
-                  <img src={naira} alt="NGN" />
+                <div className="w-5 mb-1">
+                  <img src={naira} alt="NGN" className="w-full h-auto opacity-80" />
                 </div>
-                <select className="font-normal bg-white text-xl">
+                <select className="font-semibold bg-transparent text-lg text-brand-dark cursor-pointer outline-none hover:text-brand-accent transition-colors">
                   <option value="NGN">NGN</option>
                 </select>
               </div>
 
               <div
-                className="flex items-center space-x-2 cursor-pointer"
+                className="flex items-center space-x-2 cursor-pointer group"
                 onClick={toggleLoginModal}
               >
-                <MdOutlineManageAccounts className="text-gray-800" size={20} />
-                <a href="#" className="text-gray-800">
+                <MdOutlineManageAccounts className="text-brand-dark group-hover:text-brand-accent transition-colors" size={26} />
+                <span className="font-medium text-brand-dark group-hover:text-brand-accent transition-colors text-lg">
                   Login
-                </a>
+                </span>
               </div>
 
-              <div className="relative cursor-pointer" onClick={toggleCart}>
-                <MdOutlineAddShoppingCart className="text-gray-800" size={24} />
+              <div className="relative cursor-pointer group" onClick={toggleCart}>
+                <div className="p-2 bg-brand-light/50 rounded-full group-hover:bg-brand-light transition-colors">
+                  <MdOutlineAddShoppingCart className="text-brand-dark group-hover:text-brand-accent transition-colors" size={26} />
+                </div>
                 {totalItems > 0 && (
-                  <span className="absolute bottom-4 left-4 bg-[#502116] text-white rounded-full h-5 w-5 flex items-center justify-center text-xs">
+                  <span className="absolute -top-1 -right-1 bg-brand text-brand-light rounded-full h-6 w-6 flex items-center justify-center text-xs font-bold animate-pulse-slow shadow-md border-2 border-white">
                     {totalItems}
                   </span>
                 )}
@@ -312,76 +313,47 @@ function Navbar() {
 
       <div className="md:hidden">
         {!isCartOpen && (
-          <nav className="flex flex-col items-center py-4 bg-white">
-            <div className="flex items-center justify-between flex-wrap bg-white w-full ">
+          <nav className="flex flex-col items-center py-3 px-4 glass-dark text-white shadow-md">
+            <div className="flex items-center justify-between w-full">
               {!isSearchOpen && (
                 <>
-                  <a
-                    href="#"
-                    className="flex items-center flex-shrink-0 text-white mr-20 h-0 w-20 mb-4 cursor-pointer"
-                  >
-                    <img src={logo} alt="Logo" />
+                  <a href="/" className="flex items-center flex-shrink-0 w-24 cursor-pointer">
+                    <img src={logo} alt="Logo" className="w-full h-auto mix-blend-screen drop-shadow-lg" />
                   </a>
 
-                  <div className="ml-4">
-                    <div className="flex items-center mb-4">
-                      <div className="h-0 w-6 mb-4">
-                        <img src={naira} alt="NGN" />
-                      </div>
-                      <select className="focus:outline-none bg-white border-none cursor-pointer">
-                        <option value="naira">NGN</option>
-                      </select>
-                    </div>
-                  </div>
-
-                  <div className="ml-2">
-                    <button
-                      className="flex-shrink-0 mb-4"
-                      type="button"
-                      onClick={toggleSearch}
-                    >
-                      <FiSearch size={24} className="text-black" />
+                  <div className="flex items-center space-x-4">
+                    <button className="flex items-center justify-center" onClick={toggleSearch}>
+                      <FiSearch size={22} className="text-brand-light hover:text-brand-accent transition-colors" />
                     </button>
-                  </div>
 
-                  <div className="ml-4">
-                    <div
-                      className="cursor-pointer text-lg mb-4"
-                      onClick={toggleLoginModal}
-                    >
-                      <MdOutlineManageAccounts
-                        size={25}
-                        className="text-[#110F3E]"
-                      />
+                    <div className="cursor-pointer" onClick={toggleLoginModal}>
+                      <MdOutlineManageAccounts size={24} className="text-brand-light hover:text-brand-accent transition-colors" />
                     </div>
-                  </div>
 
-                  <div
-                    className="relative cursor-pointer mb-4"
-                    onClick={toggleCart}
-                  >
-                    <MdOutlineAddShoppingCart
-                      size={25}
-                      className="text-[#110F3E]"
-                    />
-                    {totalItems > 0 && (
-                      <span className="absolute bottom-4 left-2 bg-[#502116] text-white rounded-full h-4 w-4 flex items-center justify-center text-xs">
-                        {totalItems}
-                      </span>
-                    )}
+                    <div className="relative cursor-pointer" onClick={toggleCart}>
+                      <div className="p-1.5 bg-brand-light/20 rounded-full">
+                        <MdOutlineAddShoppingCart size={22} className="text-brand-light" />
+                      </div>
+                      {totalItems > 0 && (
+                        <span className="absolute -top-1 -right-1 bg-brand-accent text-white rounded-full h-5 w-5 flex items-center justify-center text-[10px] font-bold border border-white">
+                          {totalItems}
+                        </span>
+                      )}
+                    </div>
                   </div>
                 </>
               )}
 
               {isSearchOpen && (
-                <div className="w-full flex justify-center items-center relative">
+                <div className="w-full flex items-center relative animate-fade-in">
+                  <FiSearch className="absolute left-3 text-brand-dark/50" size={20} />
                   <input
                     type="text"
-                    placeholder="Search..."
-                    className="p-2 border border-gray-300 rounded-md focus:outline-none w-64"
+                    placeholder="Search products..."
+                    className="w-full py-2.5 pl-10 pr-10 text-sm text-brand-dark bg-white rounded-full focus:outline-none focus:ring-2 focus:ring-brand-accent"
                   />
-                  <button className="absolute right-4" onClick={toggleSearch}>
-                    <MdClose size={24} className="text-[#110F3E]" />
+                  <button className="absolute right-3" onClick={toggleSearch}>
+                    <MdClose size={22} className="text-brand-dark/50 hover:text-brand-dark" />
                   </button>
                 </div>
               )}
@@ -391,70 +363,76 @@ function Navbar() {
       </div>
 
       {isLoginOpen && (
-        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50 p-2">
-          <div
-            className="bg-white rounded-lg shadow-lg p-16 bottom-24  relative"
-            style={{ width: "800px" }}
-          >
-            <MdClose
-              className="absolute top-4 right-4 cursor-pointer text-gray-600"
-              size={24}
-              onClick={toggleLoginModal} 
-            />
-            <h2 className="lg:text-3xl text-2xl font-bold text-center text-[#502116] mb-4">
-              Login
+        <div className="fixed inset-0 flex items-center justify-center bg-brand-dark/60 backdrop-blur-sm z-50 p-4 transition-all duration-300">
+          <div className="bg-white rounded-2xl shadow-2xl p-8 md:p-12 w-full max-w-lg relative animate-fade-in-up">
+            <button
+              onClick={toggleLoginModal}
+              className="absolute top-6 right-6 text-brand-dark/50 hover:text-brand-accent transition-colors bg-brand-light/30 rounded-full p-2"
+            >
+              <MdClose size={24} />
+            </button>
+
+            <h2 className="text-3xl md:text-4xl font-black text-center text-brand-dark mb-4 tracking-tight">
+              Welcome Back
             </h2>
-            <hr className="border-t border-black mb-4" />
-            <form>
-              <div className="mb-4 mt-8">
-                <label className="block mb-2 text-sm lg:text-xl">
+            <p className="text-center text-brand-dark/60 mb-8 font-medium">Please sign in to your account</p>
+
+            <form onSubmit={(e) => { e.preventDefault(); alert("Thanks for logging in! We are setting up our secure authentication soon."); toggleLoginModal(); }}>
+              <div className="mb-6">
+                <label className="block mb-2 text-sm font-bold text-brand-dark tracking-wide uppercase">
                   Email Address
                 </label>
                 <input
                   type="email"
                   placeholder="Enter your email"
-                  className="border border-gray-300 p-2 rounded w-full"
+                  className="w-full px-4 py-3.5 bg-brand-light/30 border border-brand-light rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-accent focus:bg-white transition-all"
                   required
                 />
               </div>
-              <div className="mb-4">
-                <label className="block mb-2 text-sm lg:text-xl">
+
+              <div className="mb-6">
+                <label className="block mb-2 text-sm font-bold text-brand-dark tracking-wide uppercase">
                   Password
                 </label>
                 <input
                   type="password"
                   placeholder="Enter your password"
-                  className="border border-gray-300 p-2 rounded w-full"
+                  className="w-full px-4 py-3.5 bg-brand-light/30 border border-brand-light rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-accent focus:bg-white transition-all"
                   required
                 />
               </div>
-              <div className="lg:flex justify-between items-center mb-4">
-                <div className="flex items-center space-x-2  md:flex">
-                  <input
-                    type="checkbox"
-                    id="remember"
-                    className="form-checkbox"
-                  />
-                  <label
-                    htmlFor="remember"
-                    className="text-xs font-normal text-black lg:text-sm"
-                  >
-                    Remember Me
-                  </label>
-                </div>
+
+              <div className="flex justify-between items-center mb-8">
+                <label className="flex items-center space-x-3 cursor-pointer group">
+                  <div className="relative flex items-center justify-center">
+                    <input
+                      type="checkbox"
+                      id="remember"
+                      className="peer sr-only"
+                    />
+                    <div className="w-5 h-5 border-2 border-brand-light rounded flex items-center justify-center peer-checked:bg-brand-accent peer-checked:border-brand-accent transition-colors">
+                      <svg className="w-3 h-3 text-white hidden peer-checked:block pointer-events-none" viewBox="0 0 17 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M1 6L6 11L16 1" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                      </svg>
+                    </div>
+                  </div>
+                  <span className="text-sm font-medium text-brand-dark/80 group-hover:text-brand-dark transition-colors">
+                    Remember me
+                  </span>
+                </label>
                 <button
                   type="button"
-                  className=" text-[#502116] underline lg:mt-0 mt-4 "
-                  onClick={toggleLoginModal}
+                  className="text-sm font-bold text-brand-accent hover:text-brand transition-colors"
                 >
                   Forgot Password?
                 </button>
               </div>
+
               <button
                 type="submit"
-                className="bg-[#502116] text-white lg:text-base text-xs px-4 py-4 rounded w-full"
+                className="w-full bg-brand text-white font-bold py-4 rounded-xl shadow-lg hover:shadow-xl hover:bg-brand-accent hover:-translate-y-0.5 transition-all duration-300 active:scale-95"
               >
-                Login
+                Sign In
               </button>
             </form>
           </div>
@@ -473,18 +451,16 @@ function Navbar() {
                   {steps.map((step) => (
                     <div
                       key={step.id}
-                      className={`flex flex-col items-center px-4 ${
-                        currentStep === step.id
-                          ? "text-brown font-bold text-xl"
-                          : "text-gray-500"
-                      }`}
+                      className={`flex flex-col items-center px-4 ${currentStep === step.id
+                        ? "text-brown font-bold text-xl"
+                        : "text-gray-500"
+                        }`}
                     >
                       <div
-                        className={`rounded-full w-10 h-10 flex items-center justify-center mb-2 ${
-                          currentStep === step.id
-                            ? "bg-brown text-black"
-                            : "bg-[#502116]"
-                        }`}
+                        className={`rounded-full w-10 h-10 flex items-center justify-center mb-2 ${currentStep === step.id
+                          ? "bg-brown text-black"
+                          : "bg-[#502116]"
+                          }`}
                       >
                         {step.id}
                       </div>
@@ -684,18 +660,16 @@ function Navbar() {
                 {steps.map((step) => (
                   <div
                     key={step.id}
-                    className={`flex flex-col items-center px-4 ${
-                      currentStep === step.id
-                        ? "text-brown font-bold text-xl"
-                        : "text-gray-500"
-                    }`}
+                    className={`flex flex-col items-center px-4 ${currentStep === step.id
+                      ? "text-brown font-bold text-xl"
+                      : "text-gray-500"
+                      }`}
                   >
                     <div
-                      className={`rounded-full w-10 h-10 flex items-center justify-center mb-2 ${
-                        currentStep === step.id
-                          ? "bg-brown text-black"
-                          : "bg-[#502116]"
-                      }`}
+                      className={`rounded-full w-10 h-10 flex items-center justify-center mb-2 ${currentStep === step.id
+                        ? "bg-brown text-black"
+                        : "bg-[#502116]"
+                        }`}
                     >
                       {step.id}
                     </div>

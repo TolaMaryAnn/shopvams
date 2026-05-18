@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import { FaChevronDown } from "react-icons/fa";
-import { CartContext } from "../components/ CartContext"; 
+import { CartContext } from "../components/ CartContext";
 import one from "../assets/one.jpg";
 import two from "../assets/two.jpg";
 import three from "../assets/three.jpg";
@@ -325,7 +325,7 @@ export const products = [
   },
 ];
 
- 
+
 
 // const ProductCard = ({ product }) => {
 //   const { cartItems, addToCart, removeFromCart } = useContext(CartContext);
@@ -379,47 +379,55 @@ const ProductCard = ({ product }) => {
   const itemInCart = cartItems.find((item) => item.id === product.id);
 
   return (
-    <div className="max-w-xs rounded-lg overflow-hidden shadow-lg bg-white transform transition-transform hover:scale-105">
-      <Link to={`/product/${product.id}`}>
+    <div className="group flex flex-col bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-300 border border-brand-light/50 transform hover:-translate-y-1">
+      <Link to={`/product/${product.id}`} className="relative h-48 md:h-64 overflow-hidden">
+        <div className="absolute inset-0 bg-brand-dark/0 group-hover:bg-brand-dark/10 transition-colors z-10" />
         <img
-          className="w-full h-20 sm:h-20 md:grid-h-40 lg:h-60 object-cover"
+          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
           src={product.image}
           alt={product.name}
         />
       </Link>
-      <div className="px-6 py-4">
+      <div className="flex flex-col flex-grow p-5 md:p-6">
         <Link to={`/product/${product.id}`}>
-          <div className="font-light text-sm sm:text-sm md:text-xl lg:text-xl mb-2">
+          <h3 className="font-semibold text-lg md:text-xl text-brand-dark mb-1 line-clamp-1 group-hover:text-brand-accent transition-colors">
             {product.name}
-          </div>
+          </h3>
         </Link>
-        <p className="text-gray-700 font-bold">₦{product.price}</p>
-        {itemInCart ? (
-          <div className="flex items-center mt-4 lg:mt-16 lg:px-20">
-            <button
-              onClick={() => removeFromCart(product)}
-              className="text-white bg-[#502116] px-4 lg:text-xl text-sm py-1 rounded-full"
-            >
-              -
-            </button>
-            <span className="px-4 py-1 border-t border-b">
-              {itemInCart.quantity}
-            </span>
+        <p className="text-sm text-brand-dark/60 font-medium mb-4">{product.category}</p>
+
+        <div className="mt-auto flex items-center justify-between">
+          <p className="text-lg font-bold text-brand-accent">₦{product.price.toLocaleString()}</p>
+
+          {itemInCart ? (
+            <div className="flex items-center bg-brand-light/50 rounded-full border border-brand/10">
+              <button
+                onClick={() => removeFromCart(product)}
+                className="w-8 h-8 flex items-center justify-center text-brand-dark hover:bg-brand hover:text-white rounded-full transition-colors"
+                aria-label="Remove one"
+              >
+                -
+              </button>
+              <span className="w-8 text-center font-semibold text-sm">
+                {itemInCart.quantity}
+              </span>
+              <button
+                onClick={() => addToCart(product)}
+                className="w-8 h-8 flex items-center justify-center text-brand-dark hover:bg-brand hover:text-white rounded-full transition-colors"
+                aria-label="Add one"
+              >
+                +
+              </button>
+            </div>
+          ) : (
             <button
               onClick={() => addToCart(product)}
-              className="text-white bg-[#502116] px-4 lg:text-xl text-sm py-1 rounded-full"
+              className="text-white bg-brand hover:bg-brand-accent text-sm font-semibold py-2 px-6 rounded-full transition-all duration-300 shadow-md hover:shadow-lg active:scale-95"
             >
-              +
+              Add
             </button>
-          </div>
-        ) : (
-          <button
-            onClick={() => addToCart(product)}
-            className="text-[#7E2F1E] hover:bg-[#502116] hover:text-white text-xs lg:text-base py-2 px-2 lg:px-20 lg:py-2 rounded-xl lg:rounded-2xl border border-[#7E2F1E] mt-4 lg:mt-16"
-          >
-            Add to Cart
-          </button>
-        )}
+          )}
+        </div>
       </div>
     </div>
   );
@@ -461,43 +469,41 @@ function Products({ imageSrc, title, price }) {
   const loadMore = () => setVisibleProducts((prevCount) => prevCount + 20);
 
   return (
-    <div>
+    <div className="bg-brand-light/30 pb-20">
       <div className="hidden md:block">
-        <div className="mt-14">
-          <div className="flex flex-col px-32">
-            <ul className="divide-y divide-gray-300 grid grid-cols-6 gap-4 bg-gray-100 rounded-xl px-4 py-4">
+        <div className="pt-16 pb-8">
+          <div className="flex flex-col container mx-auto px-6 max-w-5xl">
+            <h2 className="text-3xl font-bold text-center text-brand-dark mb-8">Our Collections</h2>
+            <ul className="flex flex-wrap justify-center gap-4 bg-white/60 backdrop-blur-sm shadow-sm rounded-full px-6 py-3 border border-brand-light">
               {categories.map((category, index) => (
-                <li key={index} className="py-2">
-                  <a
-                    href="#"
-                    className={`block text-center ${
-                      selectedCategory === category
-                        ? "border-b-4 border-gray-800"
-                        : ""
-                    }`}
+                <li key={index} className="flex-1 min-w-fit">
+                  <button
+                    className={`w-full block px-6 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 ${selectedCategory === category
+                      ? "bg-brand text-white shadow-md"
+                      : "text-brand-dark/70 hover:bg-brand-light hover:text-brand-dark"
+                      }`}
                     onClick={() => handleCategoryClick(category)}
-                    style={{ cursor: "pointer" }}
                   >
                     {category}
-                  </a>
+                  </button>
                 </li>
               ))}
             </ul>
           </div>
         </div>
 
-        <div className="container mx-auto px-4 py-8 mt-12">
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        <div className="container mx-auto px-6 py-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-8">
             {filteredProducts.slice(0, visibleProducts).map((product) => (
               <ProductCard key={product.id} product={product} />
             ))}
           </div>
 
           {visibleProducts < filteredProducts.length && (
-            <div className="flex justify-center mt-16">
+            <div className="flex justify-center mt-16 pb-10">
               <button
                 onClick={loadMore}
-                className="bg-gray-200 hover:bg-[#502116] hover:text-white rounded-2xl text-black font-normal py-4 px-48 rounded"
+                className="bg-white border-2 border-brand-light hover:border-brand hover:bg-brand hover:text-white transition-colors duration-300 rounded-full text-brand-dark font-semibold py-3 px-16 shadow-sm hover:shadow-md"
               >
                 Load More
               </button>
@@ -507,40 +513,32 @@ function Products({ imageSrc, title, price }) {
       </div>
 
       <div className="md:hidden">
-        
-
-        <div className="mt-6 px-4">
-          
+        <div className="sticky top-[80px] z-40 bg-brand-light/95 backdrop-blur-md pt-4 pb-2 px-4 shadow-sm">
           <button
-            className="flex items-center justify-between w-full text-white bg-gray-200 py-2 px-4 rounded-md"
+            className="flex items-center justify-between w-full bg-white text-brand-dark border border-brand-light/50 shadow-sm py-3 px-5 rounded-full font-semibold"
             onClick={toggleDropdown}
           >
-            <span className="text-black font-bold">Browse Collections</span>
+            <span>{selectedCategory === "All" ? "Browse Collections" : selectedCategory}</span>
             <FaChevronDown
-              className={`transition-transform duration-300 text-black ${
-                isOpen ? "transform rotate-180" : ""
-              }`}
+              className={`transition-transform duration-300 text-brand-accent ${isOpen ? "transform rotate-180" : ""
+                }`}
             />
           </button>
 
-         
           {isOpen && (
-            <div className="flex flex-col mt-4">
-              <ul className="divide-y divide-gray-300 rounded-xl text-xs px-4 py-2 bg-gray-100">
+            <div className="absolute left-4 right-4 mt-2 bg-white rounded-2xl shadow-xl border border-brand-light overflow-hidden z-50">
+              <ul className="divide-y divide-brand-light/50 text-sm font-medium text-brand-dark max-h-60 overflow-y-auto">
                 {categories.map((category, index) => (
-                  <li key={index} className="py-2">
-                    <a
-                      href="#"
-                      className={`block text-center ${
-                        selectedCategory === category
-                          ? "border-b-4 border-gray-800"
-                          : ""
-                      }`}
+                  <li key={index}>
+                    <button
+                      className={`w-full text-left px-5 py-4 transition-colors ${selectedCategory === category
+                        ? "bg-brand/5 text-brand"
+                        : "hover:bg-brand-light/20"
+                        }`}
                       onClick={() => handleCategoryClick(category)}
-                      style={{ cursor: "pointer" }}
                     >
                       {category}
-                    </a>
+                    </button>
                   </li>
                 ))}
               </ul>
@@ -548,18 +546,18 @@ function Products({ imageSrc, title, price }) {
           )}
         </div>
 
-        <div className="container mx-auto px-4 py-4 mt-6">
-          <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        <div className="container mx-auto px-4 py-6 mt-2">
+          <div className="grid grid-cols-2 gap-4">
             {filteredProducts.slice(0, visibleProducts).map((product) => (
               <ProductCard key={product.id} product={product} />
             ))}
           </div>
 
           {visibleProducts < filteredProducts.length && (
-            <div className="flex justify-center mt-8">
+            <div className="flex justify-center mt-10 mb-8">
               <button
                 onClick={loadMore}
-                className="bg-gray-200 hover:bg-[#502116] hover:text-white rounded-xl text-black text-sm py-4 px-10 rounded"
+                className="bg-white border-2 border-brand-light hover:border-brand hover:bg-brand hover:text-white transition-colors duration-300 rounded-full text-brand-dark font-semibold py-3 px-10 shadow-sm"
               >
                 Load More
               </button>

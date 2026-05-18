@@ -11,162 +11,162 @@ import {
 
 const Footer = () => {
   return (
-    <div>
-      <footer className="bg-black text-white py-10 hidden md:block">
+    <footer className="w-full bg-brand-dark text-brand-light">
+      {/* Desktop Footer */}
+      <div className="hidden md:block py-16">
+        <div className="container mx-auto px-6 max-w-7xl">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
+            <div className="space-y-8">
+              <div>
+                <h2 className="text-xl font-bold mb-6 tracking-wider text-brand-accent uppercase">
+                  Contact Us
+                </h2>
+                <div className="space-y-4 text-brand-light/90">
+                  <p className="flex items-center text-lg hover:text-brand-accent transition-colors cursor-pointer w-fit">
+                    <FiPhoneCall className="mr-4 text-brand-accent" size={24} />
+                    <span>09159373823</span>
+                  </p>
+                  <div className="flex items-start text-lg pt-2">
+                    <CiLocationOn className="mr-4 mt-1 text-brand-accent flex-shrink-0" size={28} />
+                    <p className="leading-relaxed">
+                      14c University Road, Abule Oja,<br />
+                      Akoka Yaba Lagos, Yaba.<br />
+                      Lagos, Nigeria. 100001
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="pt-4 border-t border-white/10 flex items-center justify-between max-w-md">
+                <div className="flex items-center space-x-4 text-white/50">
+                  <FaCcVisa size={44} className="hover:text-white transition-colors" />
+                  <FaCcMastercard size={44} className="hover:text-white transition-colors" />
+                </div>
+                <div className="flex items-center space-x-6 text-brand-light/80">
+                  <FaWhatsapp
+                    size={32}
+                    className="hover:text-[#25D366] transition-colors duration-300 cursor-pointer"
+                  />
+                  <FaInstagram
+                    size={32}
+                    className="hover:text-[#E1306C] transition-colors duration-300 cursor-pointer"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <h2 className="text-xl font-bold mb-6 tracking-wider text-brand-accent uppercase">
+                Sign Up for Updates
+              </h2>
+              <form className="flex flex-col space-y-4 max-w-md">
+                <input
+                  type="text"
+                  placeholder="Email address or phone number"
+                  className="p-4 rounded-lg text-brand-dark bg-white/90 focus:outline-none focus:ring-2 focus:ring-brand-accent transition-all placeholder-brand-dark/50"
+                />
+                <button className="bg-brand hover:bg-brand-accent transition-colors duration-300 text-white py-4 rounded-lg font-bold text-lg shadow-lg hover:shadow-xl hover:-translate-y-0.5">
+                  Subscribe
+                </button>
+              </form>
+
+              <div className="flex flex-row space-x-8 mt-12 text-sm font-medium">
+                <a
+                  href="/"
+                  className="text-brand-light/60 hover:text-white transition-colors duration-200 uppercase tracking-widest"
+                >
+                  Return Policy
+                </a>
+                <a
+                  href="/"
+                  className="text-brand-light/60 hover:text-white transition-colors duration-200 uppercase tracking-widest"
+                >
+                  About Us
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <hr className="border-white/10 mt-16 mb-8" />
+          <div className="text-center">
+            <p className="text-brand-light/50 text-sm font-medium tracking-wide">
+              Made with <FaHeart className="inline text-brand-accent mx-1 animate-pulse" /> by Tola
+            </p>
+          </div>
+        </div>
+      </div>
+
+      {/* Mobile Footer */}
+      <div className="md:hidden py-12 px-6">
         <div className="container mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-16 px-6">
+          <div className="space-y-12">
             <div>
-              <h2 className="text-2xl font-extrabold mb-6 tracking-wide">
-                CONTACT US
-              </h2>
-              <p className="flex items-center text-lg">
-                <FiPhoneCall className="mr-3" size={24} />
-                <span>09159373823</span>
-              </p>
-              <p className="flex items-center mt-4 text-lg">
-                <CiLocationOn className="mr-3" size={28} />
-                14c University Road, Abule Oja, <br />
-                Akoka Yaba Lagos, Yaba. <br />
-                Lagos, Nigeria. 100001
-              </p>
-
-              <div className="flex items-center space-x-4 mt-6 text-red-500">
-                <FaCcVisa size={50} />
-                <FaCcMastercard size={50} />
-              </div>
-
-              <div className="flex items-center space-x-6 mt-6 text-white">
-                <FaWhatsapp
-                  size={36}
-                  className="hover:text-green-400 transition-colors duration-200"
-                />
-                <FaInstagram
-                  size={36}
-                  className="hover:text-pink-500 transition-colors duration-200"
-                />
-              </div>
-            </div>
-
-            <div>
-              <h2 className="text-2xl font-extrabold mb-6 tracking-wide">
-                SIGN UP FOR DISCOUNTS & UPDATES
+              <h2 className="text-lg font-bold mb-6 tracking-wider text-brand-accent uppercase">
+                Sign Up for Updates
               </h2>
               <form className="flex flex-col space-y-4">
                 <input
                   type="text"
-                  placeholder="Enter your phone number or email address"
-                  className="p-3 rounded-md text-gray-900 bg-gray-100 focus:outline-none focus:ring-2 focus:ring-red-500"
+                  placeholder="Email address or phone number"
+                  className="p-3.5 rounded-lg text-brand-dark bg-white/90 focus:outline-none focus:ring-2 focus:ring-brand-accent text-sm"
                 />
-                <button className="bg-[#502116] hover:bg-[#7E2F1E] transition-colors duration-200 text-white py-3 rounded-md mt-4 font-bold text-lg">
+                <button className="bg-brand hover:bg-brand-accent transition-colors duration-300 text-white py-3.5 rounded-lg font-bold text-sm shadow-md">
                   Subscribe
                 </button>
               </form>
-
-              {/* Links */}
-              <div className="flex flex-col md:flex-row md:justify-between mt-10 space-y-4 md:space-y-0">
-                <a
-                  href="/"
-                  className="text-gray-400 hover:text-white transition-colors duration-200"
-                >
-                  Return Policy
-                </a>
-                <a
-                  href="/"
-                  className="text-gray-400 hover:text-white transition-colors duration-200"
-                >
-                  About Us
-                </a>
-              </div>
             </div>
-          </div>
 
-          <hr className="border-gray-600 mt-12" />
+            <hr className="border-white/10" />
 
-          <div className="mt-10 text-center">
-            <p className="text-gray-400 text-sm">
-              Made with <FaHeart className="inline text-green-500" /> by Tola
-            </p>
-          </div>
-        </div>
-      </footer>
-
-      <footer className="md:hidden">
-        <div className="container mx-auto bg-black text-white py-8 px-6">
-          <div className="grid grid-cols-1 gap-8">
             <div>
-              <h2 className="text-base font-extrabold mb-6">
-                SIGN UP FOR DISCOUNTS & UPDATES
+              <h2 className="text-lg font-bold mb-6 tracking-wider text-brand-accent uppercase">
+                Contact Us
               </h2>
-              <form className="flex flex-col space-y-4">
-                <input
-                  type="text"
-                  placeholder="Enter your phone number or email address"
-                  className="p-3 rounded-md text-gray-900 bg-gray-100 focus:outline-none focus:ring-2 focus:ring-red-500"
-                />
-                <button className="bg-[#502116] hover:bg-[#7E2F1E] transition-colors duration-200 text-white py-3 rounded-md mt-4 font-bold text-sm">
-                  Subscribe
-                </button>
-              </form>
+              <div className="space-y-4 text-brand-light/90 text-sm">
+                <p className="flex items-center">
+                  <FiPhoneCall className="mr-4 text-brand-accent" size={20} />
+                  <span>09159373823</span>
+                </p>
+                <div className="flex items-start pt-2">
+                  <CiLocationOn className="mr-4 mt-0.5 text-brand-accent flex-shrink-0" size={24} />
+                  <p className="leading-relaxed">
+                    14c University Road, Abule Oja,<br />
+                    Akoka Yaba Lagos, Yaba. <br />
+                    Lagos, Nigeria. 100001
+                  </p>
+                </div>
+              </div>
 
-              <hr className="border-gray-600 mt-6 mb-10" />
-
-              <div className="flex flex-col space-y-4">
-                <a
-                  href="/"
-                  className="text-gray-400 hover:text-white transition-colors duration-200"
-                >
-                  Return Policy
-                </a>
-                <a
-                  href="/"
-                  className="text-gray-400 hover:text-white transition-colors duration-200"
-                >
-                  About Us
-                </a>
+              <div className="flex justify-between items-center mt-8 pt-6 border-t border-white/10">
+                <div className="flex items-center space-x-3 text-white/50">
+                  <FaCcVisa size={36} />
+                  <FaCcMastercard size={36} />
+                </div>
+                <div className="flex items-center space-x-5 text-brand-light/80">
+                  <FaWhatsapp size={28} className="hover:text-[#25D366] transition-colors" />
+                  <FaInstagram size={28} className="hover:text-[#E1306C] transition-colors" />
+                </div>
               </div>
             </div>
 
-            <div>
-              <h2 className="text-lg font-extrabold mb-6">CONTACT US</h2>
-              <p className="flex items-center text-lg">
-                <FiPhoneCall className="mr-3" size={24} />
-                <span>09159373823</span>
-              </p>
-              <p className="flex items-center mt-4 text-lg">
-                <CiLocationOn className="mr-3" size={28} />
-                14c University Road, Abule Oja, <br />
-                Akoka Yaba Lagos, Yaba. <br />
-                Lagos, Nigeria. 100001
-              </p>
-
-              <div className="flex items-center space-x-4 mt-6 text-red-500">
-                <FaCcVisa size={50} />
-                <FaCcMastercard size={50} />
-              </div>
-
-              <div className="flex items-center space-x-6 mt-6 text-white">
-                <FaWhatsapp
-                  size={36}
-                  className="hover:text-green-400 transition-colors duration-200"
-                />
-                <FaInstagram
-                  size={36}
-                  className="hover:text-pink-500 transition-colors duration-200"
-                />
-              </div>
+            <div className="flex justify-center space-x-8 pt-8 border-t border-white/10">
+              <a href="/" className="text-brand-light/60 hover:text-white text-xs uppercase tracking-widest font-medium">
+                Return Policy
+              </a>
+              <a href="/" className="text-brand-light/60 hover:text-white text-xs uppercase tracking-widest font-medium">
+                About Us
+              </a>
             </div>
           </div>
 
-          <hr className="border-gray-600 mt-6" />
-
-          <div className="text-center py-6">
-            <p className="text-gray-400 text-sm">
-              Made with <FaHeart className="inline text-green-500" /> by Tola
+          <div className="text-center mt-12">
+            <p className="text-brand-light/40 text-xs tracking-wider">
+              Made with <FaHeart className="inline text-brand-accent mx-1" size={10} /> by Tola
             </p>
           </div>
         </div>
-      </footer>
-    </div>
+      </div>
+    </footer>
   );
 };
 

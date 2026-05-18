@@ -19,93 +19,104 @@ const ProductDetail = () => {
     setQuantity((prev) => (prev > 1 ? prev - 1 : 1));
 
   return (
-    <div className="container mx-auto px-4 py-8 mb-24">
-      <Link
-        to="/"
-        className="flex items-center text-[#502116] hover:text-[#7E2F1E] mb-6"
-      >
-        <FaArrowLeft className="mr-2" />
-        Back to Products
-      </Link>
+    <div className="bg-brand-light/30 min-h-screen py-12 border-t border-brand-light">
+      <div className="container mx-auto px-6 max-w-6xl mb-24">
+        <Link
+          to="/"
+          className="inline-flex items-center text-brand font-semibold hover:text-brand-accent transition-colors mb-10 bg-white/50 px-4 py-2 rounded-full border border-brand-light shadow-sm w-fit group"
+        >
+          <FaArrowLeft className="mr-2 group-hover:-translate-x-1 transition-transform" />
+          Back to Collections
+        </Link>
 
-      <div className="flex flex-col md:flex-row gap-8 p-4 lg:p-0">
-        <div className="w-full md:w-1/2">
-          <img
-            className="w-full h-auto  object-cover rounded-lg shadow-lg transition-transform duration-300 hover:scale-105"
-            src={product.image}
-            alt={product.name}
-          />
-        </div>
-
-        <div className="w-full md:w-1/2">
-          <h1 className="text-3xl font-semibold text-[#502116] mb-2">
-            {product.name}
-          </h1>
-          <p className="text-[#333333] text-xl mb-4">₦{product.price}</p>
-
-          <div className="flex items-center mb-4">
-            {[...Array(5)].map((_, index) => (
-              <FaStar
-                key={index}
-                className={
-                  index < Math.floor(rating)
-                    ? "text-[#502116]"
-                    : "text-gray-300"
-                }
+        <div className="flex flex-col lg:flex-row gap-12 lg:gap-20 bg-white rounded-[2rem] p-6 md:p-12 shadow-xl border border-white/50">
+          <div className="w-full lg:w-1/2">
+            <div className="relative rounded-3xl overflow-hidden aspect-[4/5] shadow-sm transform hover:-translate-y-2 transition-all duration-500">
+              <div className="absolute inset-0 bg-brand-dark/5 z-10 pointer-events-none" />
+              <img
+                className="w-full h-full object-cover"
+                src={product.image}
+                alt={product.name}
               />
-            ))}
-            <span className="ml-2 text-gray-600">({rating})</span>
+            </div>
           </div>
 
-          {/* Availability */}
-          <p
-            className={`font-semibold mb-4 ${
-              isAvailable ? "text-green-600" : "text-red-600"
-            }`}
-          >
-            {isAvailable ? "In Stock" : "Out of Stock"}
-          </p>
+          <div className="w-full lg:w-1/2 flex flex-col justify-center">
+            <div className="inline-block px-4 py-1.5 mb-4 text-xs font-bold tracking-wider text-brand-accent uppercase bg-brand-light/50 w-fit rounded-full">
+              {product.category || "Premium Collection"}
+            </div>
 
-          <h2 className="font-bold text-xl">Product description </h2>
-          <p className="text-gray-700 mb-6 leading-relaxed">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus
-            lacinia odio vitae vestibulum vestibulum. Cras venenatis euismod
-            malesuada. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-            Vivamus lacinia odio vitae vestibulum vestibulum. Cras venenatis
-            euismod malesuada.Lorem ipsum dolor sit amet, consectetur adipiscing
-            elit. Vivamus lacinia odio vitae vestibulum vestibulum. Cras
-            venenatis euismod malesuada.Lorem ipsum dolor sit amet, consectetur
-            adipiscing elit. Vivamus lacinia odio vitae vestibulum vestibulum.
-            Cras venenatis euismod malesuada.Lorem ipsum dolor sit amet,
-            consectetur adipiscing elit. Vivamus lacinia odio vitae vestibulum
-            vestibulum. Cras venenatis euismod malesuada.
-          </p>
+            <h1 className="text-4xl md:text-5xl font-black text-brand-dark mb-4 drop-shadow-sm leading-tight">
+              {product.name}
+            </h1>
 
-          <div className="text-sm lg:text-xl font-bold">Quantity</div>
-          <div className="flex items-center mb-6 mt-6">
-            <button
-              onClick={decreaseQuantity}
-              className="text-black bg-gray-200 px-4 lg:text-xl text-sm py-1 rounded-full"
+            <p className="text-brand-accent text-3xl font-extrabold mb-6">
+              ₦{product.price.toLocaleString()}
+            </p>
+
+            <div className="flex items-center mb-8">
+              <div className="flex space-x-1">
+                {[...Array(5)].map((_, index) => (
+                  <FaStar
+                    key={index}
+                    className={
+                      index < Math.floor(rating)
+                        ? "text-[#F59E0B]"
+                        : "text-gray-200"
+                    }
+                  />
+                ))}
+              </div>
+              <span className="ml-3 text-brand-dark/60 font-medium">({rating} Reviews)</span>
+            </div>
+
+            <div className="h-px w-full bg-brand-light mb-8" />
+
+            <h2 className="font-bold text-lg text-brand-dark uppercase tracking-wide mb-3">
+              Description
+            </h2>
+            <p className="text-brand-dark/70 mb-8 leading-relaxed text-lg font-light">
+              Elevate your style with this masterpiece. Designed for the modern gentleman,
+              it combines flawless aesthetics with unmatched durability. Every detail has
+              been carefully considered to ensure you stand out. A true mark of distinction
+              for your everyday wear.
+            </p>
+
+            <p
+              className={`font-semibold mb-8 flex items-center ${isAvailable ? "text-emerald-500" : "text-rose-500"
+                }`}
             >
-              -
-            </button>
-            <span className="px-4 py-1 bg-gray-100 text-gray-800">
-              {quantity}
-            </span>
-            <button
-              onClick={increaseQuantity}
-              className="text-black bg-gray-200 px-4 lg:text-xl text-sm py-1 rounded-full"
-            >
-              +
-            </button>
+              <span className={`w-2.5 h-2.5 rounded-full mr-2 ${isAvailable ? "bg-emerald-500 animate-pulse" : "bg-rose-500"}`} />
+              {isAvailable ? "In Stock & Ready to Ship" : "Out of Stock"}
+            </p>
+
+            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6 mt-auto">
+              <div className="flex items-center bg-brand-light/50 rounded-full border border-brand/10 p-1">
+                <button
+                  onClick={decreaseQuantity}
+                  className="w-12 h-12 flex items-center justify-center text-brand-dark bg-white hover:bg-brand hover:text-white rounded-full transition-all duration-300 shadow-sm"
+                >
+                  -
+                </button>
+                <span className="w-16 text-center font-bold text-xl text-brand-dark">
+                  {quantity}
+                </span>
+                <button
+                  onClick={increaseQuantity}
+                  className="w-12 h-12 flex items-center justify-center text-brand-dark bg-white hover:bg-brand hover:text-white rounded-full transition-all duration-300 shadow-sm"
+                >
+                  +
+                </button>
+              </div>
+
+              <button
+                onClick={() => addToCart(product, quantity)}
+                className="flex-1 w-full bg-brand text-white hover:bg-brand-accent transition-all duration-300 py-4 px-8 rounded-full font-bold text-lg shadow-xl hover:shadow-2xl hover:-translate-y-1 active:scale-95 flex items-center justify-center"
+              >
+                Add to Cart — ₦{(product.price * quantity).toLocaleString()}
+              </button>
+            </div>
           </div>
-
-          <button
-            onClick={() => addToCart(product, quantity)}
-            className="bg-[#502116] text-white text-sm lg:text-base px-24 lg:px-52 py-3 rounded-2xl shadow-lg hover:bg-[#7E2F1E] transition-colors duration-300"
-          >
-            Add {quantity} to Cart
-          </button>
         </div>
       </div>
     </div>
